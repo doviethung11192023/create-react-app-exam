@@ -3,6 +3,7 @@ import './App.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
 import Header from './component/Header/header';
+
 const App = () => {
  
 
