@@ -9,6 +9,7 @@ import store from "./redux/store";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import User from "./component/user/user";
 import Admin from "./component/admin/admin";
+import Hommepage from "./component/Home/Homepage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,6 +18,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
+            <Route index element={<Hommepage />} />
             <Route path="/user" element={<User />} />
             <Route path="/admin" element={<Admin />} />
           </Route>
