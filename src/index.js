@@ -1,30 +1,26 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import store from './redux/store';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import User from './component/user/user';
-import Admin from './component/admin/admin';
+import User from "./component/user/user";
+import Admin from "./component/admin/admin";
 
-
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <React.StrictMode>
       <BrowserRouter>
-
-    <Routes>
-        <Route index element={<App />} />
-        <Route path="/" element={<App />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="/user" element={<User />} />
+            <Route path="/admin" element={<Admin />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </React.StrictMode>
   </Provider>

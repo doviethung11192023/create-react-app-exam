@@ -1,18 +1,23 @@
-import logo from './logo.svg';
-import './App.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
-import Header from './component/Header/header';
-
+import logo from "./logo.svg";
+import "./App.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { increaseCounter, decreaseCounter } from "./redux/action/counterAction";
+import Header from "./component/Header/header";
+import { Outlet } from "react-router-dom";
 const App = () => {
- 
-
   return (
     <div className="app-container">
-      <Header />
-     
+      <div className="header-container">
+        <Header />
+      </div>
+      <div className="main-container">
+        <div className="sidenav-container"></div>
+        <div className="app-content">
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
