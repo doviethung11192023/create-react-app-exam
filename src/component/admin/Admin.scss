@@ -7,8 +7,26 @@
       .sidebar-header {
         padding: 10px;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
+        .logo-container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .logo-icon {
+            font-size: 40px;
+            color: #61dafb; // Màu xanh đặc trưng của React
+            animation: logo-spin 10s linear infinite;
+          }
+
+          .logo-text {
+            font-weight: bold;
+            font-size: 18px;
+            white-space: nowrap;
+          }
+        }
       }
+
       .toggle-btn {
         background: none;
         border: none;
@@ -26,5 +44,13 @@
   .admin-content {
     flex: 1;
     padding: 20px;
+  }
+}
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

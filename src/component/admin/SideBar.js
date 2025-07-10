@@ -8,6 +8,7 @@ import {
   FaCalendar,
   FaChartBar,
 } from "react-icons/fa";
+import { FaReact } from "react-icons/fa";
 const SideBar = (props) => {
   const [collapsed, setCollapsed] = useState(false);
   const toggleSidebar = () => {
@@ -17,6 +18,10 @@ const SideBar = (props) => {
     <div className="sidebar">
       <Sidebar style={{ height: "100vh" }} collapsed={collapsed}>
         <div className="sidebar-header">
+          <div className="logo-container">
+            <FaReact className="logo-icon" />
+            {!collapsed && <span className="logo-text">React Admin</span>}
+          </div>
           <button className="toggle-button" onClick={toggleSidebar}>
             <FaBars />
           </button>
