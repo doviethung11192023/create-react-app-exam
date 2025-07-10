@@ -1,0 +1,30 @@
+.admin-container {
+  display: flex;
+  .admin-sidebar {
+    height: 100vh;
+    .sidebar {
+      height: 100vh !important;
+      .sidebar-header {
+        padding: 10px;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .toggle-btn {
+        background: none;
+        border: none;
+        color: #1f1f1f;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 4px;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
+  }
+
+  .admin-content {
+    flex: 1;
+    padding: 20px;
+  }
+}
