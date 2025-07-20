@@ -1,33 +1,5 @@
-import { useEffect, useState } from "react";
-import { getALLUser } from "../../../service/ApiService";
-import { toast } from "react-toastify";
-const TableUser = () => {
-  const [listUser, setListUser] = useState([
-    {
-      id: 10,
-      username: "0764814822",
-      email: "hung@gmail.com",
-      role: "User",
-      image: "",
-    },
-    {
-      id: 9,
-      username: "0764814822",
-      email: "hr@gmail.com",
-      role: "User",
-      image: "",
-    },
-  ]);
-  useEffect(() => {
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    const Data = await getALLUser();
-    if (Data && Data.EC === 0) {
-      setListUser(Data.DT);
-      toast.success(Data.EM);
-    }
-  };
+const TableUser = (props) => {
+  const { listUser } = props;
   return (
     <table class="table table-hover table-bordered">
       <thead>
