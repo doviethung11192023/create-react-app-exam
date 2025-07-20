@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { Link } from "react-router-dom";
 import {
   FaBars,
   FaChartPie,
@@ -27,12 +28,21 @@ const SideBar = (props) => {
           </button>
         </div>
         <Menu>
-          <SubMenu label="Charts" icon={<FaChartBar />}>
-            <MenuItem icon={<FaChartPie />}> Pie charts </MenuItem>
-            <MenuItem icon={<FaChartLine />}> Line charts </MenuItem>
+          <MenuItem icon={<FaBook />} component={<Link to="/admin" />}>
+            {" "}
+            DashBoard{" "}
+          </MenuItem>
+          <SubMenu label="Features" icon={<FaChartBar />}>
+            <MenuItem
+              icon={<FaChartPie />}
+              component={<Link to="/admin/ManageUser" />}
+            >
+              {" "}
+              Quản lí user{" "}
+            </MenuItem>
+            <MenuItem icon={<FaChartLine />}> Quản lí bài quiz</MenuItem>
+            <MenuItem icon={<FaChartLine />}> Quản lí câu hỏi</MenuItem>
           </SubMenu>
-          <MenuItem icon={<FaBook />}> Documentation </MenuItem>
-          <MenuItem icon={<FaCalendar />}> Calendar </MenuItem>
         </Menu>
       </Sidebar>
     </div>

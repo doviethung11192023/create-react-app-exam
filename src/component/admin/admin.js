@@ -1,5 +1,6 @@
 import SideBar from "./SideBar";
 import "./Admin.scss";
+import { Outlet } from "react-router-dom";
 const Admin = (props) => {
   return (
     <div className="admin-container">
@@ -8,7 +9,11 @@ const Admin = (props) => {
       </div>
 
       <div className="admin-content">
-        <h1>Admin Dashboard</h1>
+        <Outlet />
+
+        {/* <h1>Admin Dashboard</h1>
+        <div className="admin-header">header-admin</div>
+        <div className="admin-body">header-content</div> */}
       </div>
     </div>
   );

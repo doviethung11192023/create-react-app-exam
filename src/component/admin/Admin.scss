@@ -44,6 +44,17 @@
   .admin-content {
     flex: 1;
     padding: 20px;
+    width: 100vw;
+    .admin-header {
+      height: 40px;
+      border: 1px solid #111;
+    }
+    .admin-body {
+      height: calc(100vh - 40px);
+      border: 1px solid red;
+      padding: 20px;
+      overflow-y: auto;
+    }
   }
 }
 @keyframes logo-spin {
