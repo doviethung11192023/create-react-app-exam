@@ -1,7 +1,13 @@
 .manage-user-container {
   .manage-user-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
   }
   .manage-user-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 }
 .modal-create-user {

@@ -1,12 +1,22 @@
+import axios from "axios";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
-const ModalCreateUser = () => {
-  const [show, setShow] = useState(false);
+const ModalCreateUser = (props) => {
+  const { show, setShow } = props;
+  //const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+    setEmail("");
+    setPassword("");
+    setUsername("");
+    setRole("User");
+    setImage(null);
+    setImagePreview(null);
+  };
+  //const handleShow = () => setShow(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -23,12 +33,26 @@ const ModalCreateUser = () => {
       //setImagePreview(null);
     }
   };
+  const handleSubmitModal = async () => {
+    alert("Submit form");
+    const data = new FormData();
+    data.append("email", email);
+    data.append("password", password);
+    data.append("username", username);
+    data.append("role", role);
+    data.append("image", image);
+    let response = await axios.post(
+      "http://localhost:8081/api/v1/participant",
+      data
+    );
+    console.log("response: ", response);
+  };
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      {/* <Button variant="primary" onClick={handleShow}>
         Launch static backdrop modal
-      </Button>
+      </Button> */}
 
       <Modal
         show={show}
@@ -110,7 +134,9 @@ const ModalCreateUser = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">save</Button>
+          <Button variant="primary" onClick={() => handleSubmitModal()}>
+            save
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
