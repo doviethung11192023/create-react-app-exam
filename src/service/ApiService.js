@@ -21,4 +21,7 @@ const PutUpdateUser = async (id, username, role, image) => {
   console.log("image test put:", image);
   return await axios.put("api/v1/participant", data);
 };
-export { PostCreateUser, getALLUser, PutUpdateUser };
+const DeleteUser = async (id) => {
+  return await axios.delete("api/v1/participant", { data: { id: id } });
+};
+export { PostCreateUser, getALLUser, PutUpdateUser, DeleteUser };

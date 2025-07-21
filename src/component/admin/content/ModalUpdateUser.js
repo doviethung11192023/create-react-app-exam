@@ -72,10 +72,6 @@ const ModalUpdateUser = (props) => {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShow(true)}>
-        Launch static backdrop modal
-      </Button>
-
       <Modal
         show={show}
         onHide={handleClose}
