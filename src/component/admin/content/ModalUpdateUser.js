@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 import { ToastContainer, toast } from "react-toastify";
-import { PostCreateUser } from "../../../service/ApiService";
+import { PutUpdateUser } from "../../../service/ApiService";
 import _ from "lodash";
 const ModalUpdateUser = (props) => {
   const { show, setShow } = props;
@@ -33,7 +33,7 @@ const ModalUpdateUser = (props) => {
       setPassword(props.dataUser.password || "");
       setUsername(props.dataUser.username || "");
       setRole(props.dataUser.role || "User");
-      setImage(props.dataUser.image || null);
+
       if (props.dataUser.image) {
         setImagePreview(`data:image/png;base64,${props.dataUser.image}`);
       }
@@ -45,33 +45,19 @@ const ModalUpdateUser = (props) => {
     if (file) {
       setImagePreview(URL.createObjectURL(file));
       console.log("file: ", file);
-      setImage(URL.createObjectURL(file));
+      setImage(event.target.files[0]);
     } else {
       //setImagePreview(null);
     }
   };
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
+
   const handleSubmitModal = async () => {
     //alert("Submit form");
-    const isValidEmail = validateEmail(email);
-    if (!isValidEmail) {
-      toast.error("Email is not valid");
-      return;
-    }
-    if (!password || !username) {
-      toast.error("Please fill in all fields");
-      return;
-    }
+
     console.log("image: ", image);
 
-    let Data = await PostCreateUser(email, password, username, role, image);
-    console.log("response: ", Data);
+    let Data = await PutUpdateUser(props.dataUser.id, username, role, image);
+    console.log("response 11: ", Data);
     if (Data && Data.EC === 0) {
       toast.success(Data.EM);
       handleClose();
