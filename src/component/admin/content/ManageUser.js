@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import ModalCreateUser from "./ModalCreateUser";
+import ModalUpdateUser from "./ModalUpdateUser";
 import "./ManageUser.scss";
 import { FcPlus } from "react-icons/fc";
 import TableUser from "./tableUser";
 import { getALLUser } from "../../../service/ApiService";
 import { toast } from "react-toastify";
+import { Modal } from "bootstrap";
 const ManageUser = (props) => {
   const [showCreateUserModal, setShowCreateUserModal] = useState(false);
+  const [showUpdateUserModal, setShowUpdateUserModal] = useState(false);
   const [listUser, setListUser] = useState([
     {
       id: 10,
@@ -23,6 +26,7 @@ const ManageUser = (props) => {
       image: "",
     },
   ]);
+  const [dataUser, setDataUser] = useState({});
   useEffect(() => {
     fetchData();
   }, []);
@@ -32,6 +36,14 @@ const ManageUser = (props) => {
       setListUser(Data.DT);
       toast.success(Data.EM);
     }
+  };
+  const handleUpdateUser = (user) => {
+    setDataUser(user);
+    setShowUpdateUserModal(true);
+  };
+  const resetUpdateUser = () => {
+    setDataUser({});
+    setShowUpdateUserModal(false);
   };
   return (
     <div className="manage-user-container">
@@ -51,13 +63,19 @@ const ManageUser = (props) => {
           </button>
         </div>
         <div className="table-user">
-          <TableUser listUser={listUser} />
+          <TableUser listUser={listUser} handleUpdateUser={handleUpdateUser} />
         </div>
       </div>
       <ModalCreateUser
         show={showCreateUserModal}
         setShow={setShowCreateUserModal}
         fetchData={fetchData}
+      />
+      <ModalUpdateUser
+        show={showUpdateUserModal}
+        setShow={setShowUpdateUserModal}
+        dataUser={dataUser}
+        resetUpdateUser={resetUpdateUser}
       />
     </div>
   );
